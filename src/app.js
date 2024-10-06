@@ -17,26 +17,44 @@ window.onload = function() {
     });
     return arr; // retornamos el resultado
   };
-  const FiltrarArrays = arr => {
-    arr.forEach(element => {
-      if (
-        element.slice(element.length - 1, element.length).toLowerCase() ===
-          "us" ||
-        "io"
-      ) {
-        console.log("hola");
+
+  const FiltrarArrays = (arr, domain) => {
+    domain.forEach(element => {
+      for (let i = 0; i < arr.length; i++) {
+        if (
+          arr[i].slice(arr[i].length - 3, arr[i].length).toLowerCase() ==
+          element
+        ) {
+          arr[i] = `${arr[i].slice(0, arr[i].length - 3)}.${element}`;
+        } else if (
+          arr[i].slice(arr[i].length - 2, arr[i].length).toLowerCase() ==
+          element
+        ) {
+          arr[i] = `${arr[i].slice(0, arr[i].length - 2)}.${element}`;
+        }
       }
     });
+    return arr;
   };
 
-  let pronoun = ["the", "our"], // dominios
-    adj = ["great", "big"],
-    noun = ["jogger", "racoon"],
-    domain = [".com", ".net", ".us", ".io"];
+  let pronoun = ["the", "our", "this", "that", "my"], // dominios
+    adj = ["great", "big", "ejemplus", "little", "amazing", "crazy", "funny"],
+    noun = [
+      "jogger",
+      "racoon",
+      "telecom",
+      "intercom",
+      "dotcom",
+      "internet",
+      "cabernet",
+      "bonus",
+      "focus",
+      "radio",
+      "portafolio"
+    ],
+    domain = ["com", "net", "us", "io"];
 
   let ar = CompararArrays(pronoun, adj),
-    arr = CompararArrays(ar, noun),
-    arrDefinitivo = CompararArrays(arr, domain);
-
-  console.log(FiltrarArrays(arr));
+    arr = CompararArrays(ar, noun);
+  console.log(FiltrarArrays(arr, domain));
 };
