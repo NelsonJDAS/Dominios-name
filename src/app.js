@@ -9,7 +9,7 @@ window.onload = function() {
   const CompararArrays = (arr1, arr2) => {
     //Funcion para comparar arrays y retornar uno nuevo
     let arr = []; // creamos un array nuevo a devolver
-    arr1.forEach(element => {
+    arr1.forEach((element) => {
       //hacemos un foreach de cada elemento del primer array a comparar
       for (let i = 0; i < arr2.length; i++) {
         arr.push(`${element}${arr2[i]}`); // con un for agregamos el elemento del foreach junto a cada elemento del array 2
@@ -20,7 +20,7 @@ window.onload = function() {
 
   const FiltrarArrays = (arr, domain) => {
     // funcion para filtrar los dominios
-    domain.forEach(element => {
+    domain.forEach((element) => {
       //filtramos por elemento
       for (let i = 0; i < arr.length; i++) {
         //comprobamos las dos ultimas silabas
@@ -52,22 +52,19 @@ window.onload = function() {
       "bonus",
       "focus",
       "radio",
-      "portafolio"
+      "portafolio",
     ],
-    domain = ["com", "net", "us", "io"];
-
-  let arr = CompararArrays(pronoun, adj);
+    domain = ["com", "net", "us", "io"],
+    arr = CompararArrays(pronoun, adj);
 
   arr = CompararArrays(arr, noun);
   arr = FiltrarArrays(arr, domain);
 
-  console.log(arr);
-
   const boton = document.getElementById("ejemplo"),
-    domainhtml = document.getElementById("domain");
+    container = document.getElementById("containerDomains");
 
   for (let i = 0; i < arr.length; i++) {
-    domainhtml.innerHTML += `
+    container.innerHTML += `
       <tr>
           <th scope="row">${i + 1}</th>
           <td>${arr[i]}</td>
