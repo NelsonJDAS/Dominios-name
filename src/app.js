@@ -5,75 +5,69 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
+import { CompararArrays, FiltrarArrays } from "./functions";
+
 window.onload = function() {
-  const CompararArrays = (arr1, arr2) => {
-    //Funcion para comparar arrays y retornar uno nuevo
-    let arr = []; // creamos un array nuevo a devolver
-    arr1.forEach((element) => {
-      //hacemos un foreach de cada elemento del primer array a comparar
-      for (let i = 0; i < arr2.length; i++) {
-        arr.push(`${element}${arr2[i]}`); // con un for agregamos el elemento del foreach junto a cada elemento del array 2
+  //Domains
+  let domains = [
+    "com",
+    "org",
+    "net",
+    "edu",
+    "gov",
+    "app",
+    "biz",
+    "co",
+    "xyz",
+    "me",
+    "io"
+  ];
+
+  //variables interactivas junto al html
+  const btnlimpiartabla = document.getElementById("btnLimpiar"),
+    btnSubirDomain = document.getElementById("btnSubirDomain"),
+    inputsubirdomain = document.getElementById("inputdomain"),
+    btnMostrarTodos = document.getElementById("all"),
+    botonesFiltrar = document.querySelectorAll(".btnfiltrar"),
+    contenedorDomains = document.getElementById("containerDomains");
+
+  let arrDomains = [];
+
+  btnMostrarTodos.addEventListener("click", () => {
+    let number = 1;
+    contenedorDomains.innerHTML = "";
+    arrDomains.forEach(arr => {
+      for (let i = 0; i < domains.length; i++) {
+        contenedorDomains.innerHTML += `
+             <tr>
+                 <th scope="row">${number}</th>
+                 <td>${arr}</td>
+                 <td>${arr}.${domains[i]}</td>
+                 <td>${domains[i]}</p></td>
+             </tr>`;
+        return (number = number + 1);
       }
     });
-    return arr; // retornamos el resultado
-  };
+  });
+  btnSubirDomain.addEventListener("click", () => {
+    inputsubirdomain.placeholder = "Domain Added!";
+    arrDomains.push(inputsubirdomain.value);
+    inputsubirdomain.value = "";
+  });
 
-  const FiltrarArrays = (arr, domain) => {
-    // funcion para filtrar los dominios
-    domain.forEach((element) => {
-      //filtramos por elemento
-      for (let i = 0; i < arr.length; i++) {
-        //comprobamos las dos ultimas silabas
-        if (
-          arr[i].slice(arr[i].length - 3, arr[i].length).toLowerCase() == //comprobamos las tres ultimas silabas
-          element
-        ) {
-          arr[i] = `${arr[i].slice(0, arr[i].length - 3)}.${element}`; //actualizamos el valor agregando el dominio
-        } else if (
-          arr[i].slice(arr[i].length - 2, arr[i].length).toLowerCase() == //comprobamos las dos ultimas silabas
-          element
-        ) {
-          arr[i] = `${arr[i].slice(0, arr[i].length - 2)}.${element}`; //actualizamos el valor agregando el dominio
-        }
+  botonesFiltrar.forEach(btn => {
+    btn.addEventListener("click", () => {
+      contenedorDomains.innerHTML = "";
+      for (let i = 0; i < arrDomains.length; i++) {
+        console.log("hola");
+        contenedorDomains.innerHTML += `
+             <tr>
+                 <th scope="row">${i + 1}</th>
+                 <td>${arrDomains[i]}</td>
+                 <td>${arrDomains[i]}.${btn.value}</td>
+                 <td>${btn.value}</p></td>
+             </tr>`;
       }
     });
-    return arr;
-  };
-
-  //Dominios
-  let pronoun = ["the", "our", "this", "that", "my"],
-    adj = ["great", "big", "little", "amazing", "crazy", "funny"],
-    noun = [
-      "telecom",
-      "intercom",
-      "dotcom",
-      "internet",
-      "cabernet",
-      "bonus",
-      "focus",
-      "radio",
-      "portafolio",
-    ],
-    domain = ["com", "net", "us", "io"],
-    arr = CompararArrays(pronoun, adj);
-
-  arr = CompararArrays(arr, noun);
-  arr = FiltrarArrays(arr, domain);
-
-  const boton = document.getElementById("ejemplo"),
-    container = document.getElementById("containerDomains");
-
-  for (let i = 0; i < arr.length; i++) {
-    container.innerHTML += `
-      <tr>
-          <th scope="row">${i + 1}</th>
-          <td>${arr[i]}</td>
-          <td>${arr[i].toUpperCase()}</td>
-          <td><p>.com</p></td>
-      </tr>`;
-  }
-
-  boton.addEventListener("click", function() {
-    domainhtml.innerHTML = "";
   });
 };

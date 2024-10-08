@@ -14,28 +14,161 @@
   </head>
   <body>
     <header>
-      <h1>Generador de dominios</h1>
+      <div class="row">
+        <div class="col-8 md-col-10 text-center text-info">
+          <h1>Generador de dominios</h1>
+        </div>
+        <div class="col-4 md-col-2">
+          <button
+            class="btn btn-outline-info fw-bold w-100 h-100 border-0 "
+            id="btnLimpiar"
+          >
+            Clean Table
+          </button>
+        </div>
+      </div>
     </header>
     <main>
-      <button id="ejemplo">ejemplo</button>
-      <div class="container">
-        <div class="row">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Uppercase</th>
-                <th scope="col">Domain</th>
-              </tr>
-            </thead>
-            <tbody class="table-group-divider" id="containerDomains"></tbody>
-          </table>
+      <!-- contenedor con el valor del usuario -->
+      <div class="row justify-content-center">
+        <div
+          class="container-fluid rounded-2 m-3 p-3 col-12 w-75 alert alert-warning text-center border border-warning h-auto"
+          role="alert"
+        >
+          <p>
+            Enter a random name to create your custom domain. Don't worry about
+            adding an extension like ".com" or ".net"; we'll take care of that.
+            You can add multiple domain names, and if you want to start fresh,
+            just click the "Clean Table" button to clear your entries. All we
+            need is the name, and we'll handle the rest!
+          </p>
+          <div class="d-flex justify-content-center">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Dominio here"
+                aria-label="Dominio here"
+                aria-describedby="btnSubirDomain"
+                id="inputdomain"
+              />
+              <button
+                class="btn btn-outline-danger"
+                type="button"
+                id="btnSubirDomain"
+              >
+                Done!
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- contenedor con los botones para seleccionar dominios -->
+      <div class=" container-fluid" id="botones">
+        <h1 class="text-center text-info">Select any domain</h1>
+        <div class="row">
+          <div class="col-12 text-center">
+            <button
+              class="btn btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              id="all"
+            >
+              ALL
+            </button>
+            <button
+              class="btnfiltrar btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              value="com"
+            >
+              .com
+            </button>
+            <button
+              class="btnfiltrar btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              value="org"
+            >
+              .org
+            </button>
+            <button
+              class="btnfiltrar btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              value="net"
+            >
+              .net
+            </button>
+            <button
+              class="btnfiltrar btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              value="edu"
+            >
+              .edu
+            </button>
+            <button
+              class="btnfiltrar btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              value="gov"
+            >
+              .gov
+            </button>
+          </div>
+
+          <div class="col-12 text-center">
+            <button
+              class="btnfiltrar btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              value="app"
+            >
+              .app
+            </button>
+            <button
+              class="btnfiltrar btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              value="biz"
+            >
+              .biz
+            </button>
+            <button
+              class="btnfiltrar btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              value="co"
+            >
+              .co
+            </button>
+            <button
+              class="btnfiltrar btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              value="xyz"
+            >
+              .xyz
+            </button>
+            <button
+              class="btnfiltrar btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              value="me"
+            >
+              .me
+            </button>
+            <button
+              class="btnfiltrar btn btn-outline-info fw-bold my-2 mx-md-3 w-auto"
+              value="io"
+            >
+              .io
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- contenedor con los dominios -->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Name + Domain</th>
+              <th scope="col">Domain</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider" id="containerDomains"></tbody>
+        </table>
       </div>
     </main>
     <footer>
-      <h1>Generador de dominios</h1>
+      <div class="row">
+        <div class="col text-center text-info">
+          <h1>Generador de Dominios</h1>
+        </div>
+      </div>
     </footer>
     <script src="app.js"></script>
   </body>
