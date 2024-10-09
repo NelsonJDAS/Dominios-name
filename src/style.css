@@ -1,4 +1,18 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+header {
+  background-color: #f1f0f0;
+  height: 70px;
+}
+
 main {
+  background-color: #ffffff;
+}
+
+footer {
+  background-color: #dddddd;
+  height: 120px;
+}
+a {
+  text-decoration: none;
 }
