@@ -5,8 +5,6 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-import { CompararArrays, FiltrarArrays } from "./functions";
-
 window.onload = function() {
   //Domains
   let domains = [
@@ -31,21 +29,21 @@ window.onload = function() {
     botonesFiltrar = document.querySelectorAll(".btnfiltrar"),
     contenedorDomains = document.getElementById("containerDomains");
 
-  let arrDomains = [];
+  let arrDomains = [],
+    numberId = 1;
 
   btnMostrarTodos.addEventListener("click", () => {
-    let number = 1;
     contenedorDomains.innerHTML = "";
     arrDomains.forEach(arr => {
       for (let i = 0; i < domains.length; i++) {
         contenedorDomains.innerHTML += `
              <tr>
-                 <th scope="row">${number}</th>
+                 <th scope="row">${numberId}</th>
                  <td>${arr}</td>
                  <td>${arr}.${domains[i]}</td>
                  <td>${domains[i]}</p></td>
              </tr>`;
-        return (number = number + 1);
+        numberId = numberId + 1;
       }
     });
   });
