@@ -65,9 +65,11 @@ window.onload = function() {
     arrDomains = [],
     pronoun = ["the", "our"],
     adj = ["great", "big"],
+    noun = ["jogger", "racoon"],
     numberId = 1;
 
   arrDomains = JUNTAR_ARRAYS(pronoun, adj);
+  arrDomains = JUNTAR_ARRAYS(arrDomains, noun);
 
   //constantes de referencias del html
   const btnlimpiartabla = document.getElementById("btnLimpiar"),
